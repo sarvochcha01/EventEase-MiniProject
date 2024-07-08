@@ -2,13 +2,19 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   sendEmailVerification,
+  signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+
 const SignUp = () => {
   const auth = getAuth();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPassword] = useState("");
 
@@ -20,7 +26,13 @@ const SignUp = () => {
         console.log(userCredential.user.email);
       })
       .then(() => {
-        // sendVerificationEmail();
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        }).then(() => {
+          console.log("Profile updated");
+        });
+
+        sendVerificationEmail();
         console.log("Redirecting to home...");
       })
       .catch((error) => {
@@ -42,20 +54,44 @@ const SignUp = () => {
       });
   };
 
+  const continueWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+
+    const auth = getAuth();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(`${errorCode}: ${errorMessage}`);
+      });
+  };
+
   return (
     <div className="w-full flex flex-col mx-auto items-center mt-16 bg-gray-100 rounded-lg py-8 lg:max-w-screen-2xl">
       <div className="text-5xl font-normal">Hi!</div>
       <div className="text-lg">Create an account</div>
       <div className="flex flex-col gap-12 mt-12">
-        {/* <div className="flex flex-col gap-2 border-b-2 border-gray-950">
+        <div className="flex flex-col gap-2 border-b-2 border-gray-950">
           <input
-            type="username"
-            name="username"
-            id="username"
-            placeholder="Enter username"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your full name"
             className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+            onChange={(event) => setName(event.target.value)}
+            value={name}
           />
-        </div> */}
+        </div>
         <div className="flex flex-col gap-2 border-b-2 border-gray-950">
           <input
             type="email"
@@ -64,6 +100,7 @@ const SignUp = () => {
             placeholder="Enter email"
             className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
             onChange={(event) => setEmail(event.target.value)}
+            value={email}
           />
         </div>
         <div className="flex flex-col gap-2 border-b-2 border-gray-950">
@@ -74,13 +111,21 @@ const SignUp = () => {
             placeholder="Enter password"
             className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
             onChange={(event) => setPassword(event.target.value)}
+            value={pass}
           />
         </div>
         <button
-          className="flex self-center justify-center bg-gray-950 text-white w-56 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
+          className="flex self-center justify-center bg-gray-950 text-white w-64 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
           onClick={createUser}
         >
           Sign Up
+        </button>
+        <button
+          className="flex self-center justify-center items-center gap-4 bg-gray-950 text-white w-64 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl -mt-8"
+          onClick={continueWithGoogle}
+        >
+          <FaGoogle />
+          Continue with Google
         </button>
         <span className="self-center text-center mt-[-32px]">
           Already have an account?

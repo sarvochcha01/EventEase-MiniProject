@@ -2,9 +2,13 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const LogIn = () => {
   const auth = getAuth();
@@ -27,17 +31,27 @@ const LogIn = () => {
       });
   };
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
+  const continueWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+
+    const auth = getAuth();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(`${errorCode}: ${errorMessage}`);
+      });
+  };
 
   return (
     <div className="w-full flex flex-col mx-auto items-center mt-16 bg-gray-100 rounded-lg py-8 lg:max-w-screen-2xl">
@@ -68,10 +82,17 @@ const LogIn = () => {
           Forgot Password?
         </Link>
         <button
-          className="flex self-center justify-center bg-gray-950 text-white w-56 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
+          className="flex self-center justify-center bg-gray-950 text-white w-64 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
           onClick={signIn}
         >
           Log In
+        </button>
+        <button
+          className="flex self-center justify-center items-center gap-4 bg-gray-950 text-white w-64 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl -mt-8"
+          onClick={continueWithGoogle}
+        >
+          <FaGoogle />
+          Continue with Google
         </button>
         <span className="self-center text-center mt-[-32px]">
           Don't have an account?

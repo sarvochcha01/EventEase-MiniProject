@@ -29,13 +29,14 @@ import BookPassesLoader from "./loaders/BookPassesLoader.js";
 import EventPage from "./Pages/EventPage.jsx";
 import EventPageLoader from "./loaders/EventPageLoader.js";
 import EventDescription from "./components/host/EventDescription.jsx";
+import HostEventLoader from "./loaders/HostEventLoader.js";
 
 // main.jsx
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<NotFound404 />}>
       <Route index element={<Home />} />
-      <Route path="host" element={<HostAnEvent />}>
+      <Route path="host" element={<HostAnEvent />} loader={HostEventLoader}>
         <Route index element={<Name />} />
         <Route path="description" element={<EventDescription />} />
         <Route path="venue" element={<Venue />} />
