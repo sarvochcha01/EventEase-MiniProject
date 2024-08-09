@@ -37,7 +37,7 @@ const Venue = () => {
         <Link to="/host/description" className="w-1/12">
           <GrLinkPrevious
             size={40}
-            className="bg-gray-200 rounded-full p-2 hover:cursor-pointer flex"
+            className="rounded-full p-2 hover:cursor-pointer flex hover:bg-[#163d45] transition-all delay-50s"
             onClick={() => setPageNum((prev) => prev - 1)}
           />
         </Link>
@@ -53,7 +53,7 @@ const Venue = () => {
             name="venueName"
             id="eventVenueNameField"
             placeholder="Enter venue name"
-            className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+            className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
             onChange={(e) => handleChange(e)}
             value={eventDetails.venueName}
           />
@@ -64,7 +64,7 @@ const Venue = () => {
             name="addressL1"
             id="eventVenueAddressL1Field"
             placeholder="Address Line 1"
-            className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+            className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
             onChange={(e) => handleChange(e)}
             value={eventDetails.addressL1}
           />
@@ -75,7 +75,7 @@ const Venue = () => {
             name="addressL2"
             id="eventVenueAddressL2Field"
             placeholder="Address Line 2 (optional)"
-            className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+            className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
             onChange={(e) => handleChange(e)}
             value={eventDetails.addressL2}
           />
@@ -87,7 +87,7 @@ const Venue = () => {
               name="city"
               id="eventVenueAddressCityField"
               placeholder="Enter city"
-              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
               onChange={(e) => handleChange(e)}
               value={eventDetails.city}
             />
@@ -98,7 +98,7 @@ const Venue = () => {
               name="state"
               id="eventVenueAddressCityField"
               placeholder="Enter state"
-              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
               onChange={(e) => handleChange(e)}
               value={eventDetails.state}
             />
@@ -111,7 +111,7 @@ const Venue = () => {
               name="pinCode"
               id="eventVenueAddressCityField"
               placeholder="Enter pin code"
-              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
               onChange={(e) => handleChange(e)}
               value={eventDetails.pinCode}
             />
@@ -122,7 +122,7 @@ const Venue = () => {
               name="country"
               id="eventVenueAddressCityField"
               placeholder="Enter country"
-              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none"
+              className="px-2 py-2 w-80 appearance-none bg-transparent outline-none focus:bg-none placeholder-white"
               onChange={(e) => handleChange(e)}
               value={eventDetails.country}
             />
@@ -130,7 +130,7 @@ const Venue = () => {
         </div>
         <Link
           to="/host/price-date"
-          className="flex self-center justify-center bg-gray-950 text-white w-56 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
+          className="flex self-center justify-center bg-[#005869] hover:bg-[#163d45] text-white w-56 rounded-lg py-4 text-lg  transition-all duration-150 hover:shadow-2xl"
           onClick={() => setPageNum((prev) => prev + 1)}
         >
           Continue

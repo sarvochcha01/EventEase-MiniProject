@@ -8,7 +8,7 @@ const EventCard = (props) => {
   const year = date.getFullYear();
 
   return (
-    <div className=" w-full flex flex-col p-4 bg-gray-100 rounded-xl lg:w-96">
+    <div className=" w-full h-48 flex flex-col p-4 bg-[#00B4D8] rounded-[32px] text-white  lg:w-96">
       <div className=" w-full flex text-2xl">{props.name}</div>
       <div className=" flex w-full mt-2">
         <div className=" flex flex-col w-1/2">
@@ -20,7 +20,7 @@ const EventCard = (props) => {
         </div>
       </div>
       <Link
-        className=" w-full flex text-xl justify-center mt-2 bg-gray-950 text-white rounded-lg py-4 hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
+        className="flex self-center justify-center bg-[#005869] hover:bg-[#163d45] text-white w-full rounded-lg py-4 text-lg  transition-all duration-150 hover:shadow-2xl mt-4"
         to={`/events/${props.id}`}
       >
         Book Now

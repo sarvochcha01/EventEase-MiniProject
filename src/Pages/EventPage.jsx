@@ -29,7 +29,7 @@ const EventPage = () => {
     //   <div>{data.datetime}</div>
     // </div>
 
-    <div className="flex flex-col w-full mt-16 bg-gray-100 p-4 py-8">
+    <div className="flex flex-col w-full mt-16 bg-[#00B4D8] rounded-[32px] text-white p-4 py-8">
       <div className="flex flex-col w-full ">
         <div className="text-3xl font-semibold">
           {data.eventDetails.eventName}
@@ -47,7 +47,7 @@ const EventPage = () => {
       <div className="flex flex-col w-full">
         <div className="text-xl mt-8">₹{data.eventDetails.price} onwards</div>
         <Link
-          className=" w-full flex text-xl justify-center mt-2 bg-gray-950 text-white rounded-lg py-4 hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
+          className=" flex self-center justify-center bg-[#005869] hover:bg-[#163d45] text-white w-full rounded-lg py-4 text-lg  transition-all duration-150 hover:shadow-2xl mt-4 "
           to={`/events/`}
         >
           Continue to payment

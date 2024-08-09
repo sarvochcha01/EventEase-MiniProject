@@ -70,7 +70,7 @@ const PriceAndDate = () => {
         <Link to="/host/venue" className="w-1/12">
           <GrLinkPrevious
             size={40}
-            className="bg-gray-200 rounded-full p-2 hover:cursor-pointer flex"
+            className="rounded-full p-2 hover:cursor-pointer flex hover:bg-[#163d45] transition-all delay-50s"
             onClick={() => setPageNum((prev) => prev - 1)}
           />
         </Link>
@@ -121,7 +121,7 @@ const PriceAndDate = () => {
         </div> */}
         <Link
           to={"/"}
-          className="flex self-center justify-center bg-gray-950 text-white w-56 rounded-lg py-4 text-lg hover:bg-white hover:text-gray-950 hover:outline hover:outline-2 transition-all duration-150 hover:shadow-2xl "
+          className="flex self-center justify-center bg-[#005869] hover:bg-[#163d45] text-white w-56 rounded-lg py-4 text-lg  transition-all duration-150 hover:shadow-2xl"
           onClick={() => {
             addToDatabase();
             setPageNum((prev) => prev + 1);

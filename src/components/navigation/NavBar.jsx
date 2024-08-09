@@ -39,7 +39,7 @@ const NavBar = () => {
                 <CiMenuBurger size={30} className="text-gray-400" />
               )}
             </li>
-            <li className="hidden lg:flex gap-2 rounded-lg hover:cursor-pointer hover:bg-gray-100">
+            <li className="hidden lg:flex gap-2 rounded-lg hover:cursor-pointer hover:bg-[#163d45] hover:text-white transition-all delay-50s">
               <Link className="flex self-center gap-2 p-3" to="/host">
                 <div className="flex items-center">
                   <MdOutlineEvent size={20} />
@@ -47,7 +47,7 @@ const NavBar = () => {
                 <div className="label ">Host an Event</div>
               </Link>
             </li>
-            <li className="hidden lg:flex gap-2 rounded-lg hover:cursor-pointer hover:bg-gray-100">
+            <li className="hidden lg:flex gap-2 rounded-lg hover:cursor-pointer hover:bg-[#163d45] hover:text-white transition-all delay-50s">
               <Link className="flex self-center gap-2 p-3" to="/events">
                 <div className="flex items-center">
                   <HiOutlineTicket size={20} />
@@ -55,7 +55,7 @@ const NavBar = () => {
                 <div className="label ">Book Passes</div>
               </Link>
             </li>
-            <li className="hidden lg:flex gap-2 rounded-lg hover:cursor-pointer hover:bg-gray-100">
+            <li className="hidden lg:flex gap-2 rounded-lg hover:cursor-pointer hover:bg-[#163d45] hover:text-white transition-all delay-50s">
               <Link className="flex self-center gap-2 p-3" to="profile">
                 <div className="flex items-center">
                   <MdOutlineAccountCircle size={20} />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full ">
       <hr className="w-[calc(100%-50px)] mx-auto mt-16" />
       <footer className="h-64 w-full items-center justify-between lg:max-w-screen-2xl self-center px-4 lg:px-20 flex lg:h-16 lg:my-4">
         <div className="logo  flex flex-col h-full w-1/2 justify-center text-3xl text-logo font-bold ">

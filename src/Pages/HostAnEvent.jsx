@@ -50,11 +50,9 @@ const HostAnEvent = () => {
     }
   };
 
-  const [eventDates, setEventDates] = useState([]);
-
   return (
-    <div className="w-full flex mt-16 bg-gray-100 lg:max-w-screen-2xl">
-      <div className="lg:w-1/3 w-full flex justify-center mx-auto">
+    <div className="w-full lg:w-2/3 flex mt-16 bg-[#00B4D8] rounded-[32px] text-white lg:max-w-screen-2xl">
+      <div className=" w-full flex justify-center mx-auto">
         <Outlet
           context={[
             pageNum,
